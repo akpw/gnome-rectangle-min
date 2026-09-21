@@ -1,21 +1,28 @@
 # Rectangle Min (`rectangle-min@akpower`)
 
-> Minimal, high-performance window tiling for GNOME Shell with macOS Rectangle shortcuts and 0ms-latency remote desktop (RDP/VNC) optimization.
+> Minimal, high-performance window tiling for GNOME Shell providing the most commonly used window actions inspired by macOS Rectangle.
 
 [![GNOME Shell 45-48](https://img.shields.io/badge/GNOME%20Shell-45%20|%2046%20|%2047%20|%2048-blue.svg)](https://gjs.guide/extensions/)
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-green.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![License: GPL v2+](https://img.shields.io/badge/License-GPL%20v2+-green.svg)](LICENSE)
 [![Zero Dependencies](https://img.shields.io/badge/Dependencies-0%20(Pure%20GJS)-orange.svg)]()
 
 ---
 
-## Highlights
+## Overview
 
+**Rectangle Min** is a lightweight, independent GNOME Shell extension providing a minimal, high-performance implementation of essential window tiling actions, inspired by the macOS [Rectangle](https://rectangleapp.com/) window manager.
+
+It is engineered for simplicity, zero latency, and seamless muscle memory parity across macOS and Linux—especially when working over Remote Desktop (RDP/VNC) sessions or native Wayland desktops.
+
+### Highlights
+
+- **Focused Action Set**: Implements only the essential, high-frequency tiling actions (Almost Maximize, Full Maximize, True Center, 3/4 splits, and Halves) without dozens of unused layouts.
 - **macOS Muscle Memory Parity**: Uses standardized `⌃⌥⇧` (`Control + Option + Shift`) combinations that pass cleanly through Microsoft Remote Desktop, Jump Desktop, Remmina, and native macOS window managers without host OS interception.
-- **Wayland / Mutter Stability**: Resolves the unmaximize crash on maximized GTK4 / Wayland windows by using safe `Meta.MaximizeFlags.BOTH` and deferred idle resizing (`GLib.idle_add`).
-- **Zero Latency (Instant Tiling)**: Pure GJS ES module (~350 lines) directly interfacing with Mutter C APIs. No npm/node build chains, no heavy abstractions, and no software animation loops that lag over remote connections.
-- **Sleek Native Panel Dropdown**: Clean, theme-adaptive GNOME Shell top-bar menu showing your active actions and shortcut badges.
+- **Wayland / Mutter Stability**: Rock-solid window geometry handling that safely unmaximizes and moves windows via native Mutter C APIs without freezing or crashing GNOME Shell.
+- **Zero Latency (Instant Tiling)**: Pure GJS ES module (~360 lines) with zero third-party dependencies, zero build steps, and no software redraw animation loops.
+- **Sleek Native Panel Dropdown**: Theme-adaptive GNOME Shell top-bar menu showing active actions and matching shortcut labels.
 - **True Center Preservation**: The Center action strictly preserves your window's existing dimensions without resizing or shrinking.
-- **Cross-Distro Ready**: Tested across Ubuntu 24.04/22.04, Fedora 40/41 (with automatic SELinux `restorecon`), Debian, Arch Linux, and RDP sessions.
+- **Cross-Distro Ready**: Clean, single-command installation across Ubuntu, Fedora (with SELinux support), Debian, and Arch Linux.
 
 ---
 
@@ -30,13 +37,13 @@ All default shortcuts use the ergonomic `⌃ + ⌥ + ⇧` (`Control + Option + S
 | **Center Window** | `⌃ + ⌥ + ⇧ + C` | `<Ctrl><Alt><Shift>C` | Centers window on monitor without altering size |
 | **Left 3/4** | `⌃ + ⌥ + ⇧ + [` | `<Ctrl><Alt><Shift>bracketleft` | Snaps window to left 75% of monitor |
 | **Right 3/4** | `⌃ + ⌥ + ⇧ + ]` | `<Ctrl><Alt><Shift>bracketright` | Snaps window to right 75% of monitor |
-| **Left Half** | `⌃ + ⌥ + ⇧ + ←` | `<Ctrl><Alt><Shift>Left` | Snaps window to left 50% |
-| **Right Half** | `⌃ + ⌥ + ⇧ + →` | `<Ctrl><Alt><Shift>Right` | Snaps window to right 50% |
-| **Top Half** | `⌃ + ⌥ + ⇧ + ↑` | `<Ctrl><Alt><Shift>Up` | Snaps window to top 50% |
-| **Bottom Half** | `⌃ + ⌥ + ⇧ + ↓` | `<Ctrl><Alt><Shift>Down` | Snaps window to bottom 50% |
+| **Left Half** | `⌃ + ⌥ + ⇧ + H` | `<Ctrl><Alt><Shift>H` | Snaps window to left 50% (Vim `h`) |
+| **Right Half** | `⌃ + ⌥ + ⇧ + L` | `<Ctrl><Alt><Shift>L` | Snaps window to right 50% (Vim `l`) |
+| **Top Half** | `⌃ + ⌥ + ⇧ + K` | `<Ctrl><Alt><Shift>K` | Snaps window to top 50% (Vim `k`) |
+| **Bottom Half** | `⌃ + ⌥ + ⇧ + J` | `<Ctrl><Alt><Shift>J` | Snaps window to bottom 50% (Vim `j`) |
 
 > [!TIP]
-> Secondary bindings (such as `<Ctrl><Super><Shift>` and `<Ctrl><Alt>`) are also mapped in the schema for environments where the `Option` key is forwarded as `Super`.
+> Secondary bindings (such as `<Ctrl><Super><Shift>` and arrow keys) are also mapped in the schema for environments where the `Option` key is forwarded as `Super`.
 
 ---
 
@@ -98,14 +105,6 @@ make uninstall
 
 ---
 
-## Why Rectangle Min over Upstream?
-
-1. **Elimination of Mutter Crash**: Upstream extensions invoke `app.unmaximize()` without arguments or without deferring geometry application, causing GNOME Shell / Mutter to crash or freeze on Wayland when resizing previously maximized windows.
-2. **Zero Overhead**: Legacy extensions often bundle multi-megabyte TypeScript compilers, bloated utility libraries, 60+ unused layout permutations, and a software redraw loop for animations that chokes RDP sessions. `Rectangle Min` is under 400 lines of modern, auditable JavaScript with zero background CPU/memory footprint.
-3. **No Shortcut Clashing**: Cleanly designed to avoid conflicts with macOS Mission Control / Spaces and GNOME Shell workspace navigators.
-
----
-
 ## License
 
-This project is licensed under the **GNU General Public License v3.0** - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the terms of the GNU General Public License v2.0 or later - see the [LICENSE](LICENSE) file for details.

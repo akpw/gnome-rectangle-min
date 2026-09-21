@@ -343,6 +343,7 @@ export default class RectangleMinExtension extends Extension {
                     styleClass: 'menu-shortcut-badge',
                     xAlign: Clutter.ActorAlign.END,
                     xExpand: true,
+                    yAlign: Clutter.ActorAlign.CENTER,
                 });
                 item.add_child(badge);
             }
@@ -357,10 +358,10 @@ export default class RectangleMinExtension extends Extension {
         addMenuItem('Left 3/4', () => this.tileThreeFourthsLeft(), '⌃⌥⇧[');
         addMenuItem('Right 3/4', () => this.tileThreeFourthsRight(), '⌃⌥⇧]');
         menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
-        addMenuItem('Left Half', () => this.tileHalfLeft(), '⌃⌥⇧←');
-        addMenuItem('Right Half', () => this.tileHalfRight(), '⌃⌥⇧→');
-        addMenuItem('Top Half', () => this.tileHalfTop(), '⌃⌥⇧↑');
-        addMenuItem('Bottom Half', () => this.tileHalfBottom(), '⌃⌥⇧↓');
+        addMenuItem('Left Half', () => this.tileHalfLeft(), '⌃⌥⇧H');
+        addMenuItem('Right Half', () => this.tileHalfRight(), '⌃⌥⇧L');
+        addMenuItem('Top Half', () => this.tileHalfTop(), '⌃⌥⇧K');
+        addMenuItem('Bottom Half', () => this.tileHalfBottom(), '⌃⌥⇧J');
 
         Main.panel.addToStatusArea('RectangleMin', this._menu, 1);
     }

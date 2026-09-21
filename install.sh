@@ -137,6 +137,7 @@ echo "  ⌃ + ⌥ + ⇧ + M          : Full Maximize"
 echo "  ⌃ + ⌥ + ⇧ + C          : Center Window (preserves size)"
 echo "  ⌃ + ⌥ + ⇧ + [          : Left 3/4"
 echo "  ⌃ + ⌥ + ⇧ + ]          : Right 3/4"
-echo "  ⌃ + ⌥ + ⇧ + ← / → / ↑ / ↓ : Half Screen (Left/Right/Top/Bottom)"
+echo "  ⌃ + ⌥ + ⇧ + H / L / K / J : Half Screen (Left/Right/Top/Bottom - Vim style)
+  ⌃ + ⌥ + ⇧ + ← / → / ↑ / ↓ : Half Screen (Arrows fallback)"
 echo ""
 echo "Note: If running under Wayland without extension hot-reloading, log out & back in or reconnect RDP."

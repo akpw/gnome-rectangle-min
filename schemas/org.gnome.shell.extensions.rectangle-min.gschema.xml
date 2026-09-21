@@ -44,25 +44,25 @@
     </key>
 
     <key type="as" name="tile-half-left">
-      <default><![CDATA[['<Control><Alt><Shift>Left', '<Super><Alt><Shift>Left', '<Control><Alt>Left', '<Control><Super>Left']]]></default>
+      <default><![CDATA[['<Control><Alt><Shift>H', '<Control><Super><Shift>H', '<Control><Alt><Shift>Left', '<Super><Alt><Shift>Left', '<Control><Alt>Left', '<Control><Super>Left']]]></default>
       <summary>Left Half</summary>
       <description>Tile window to left 50% of screen</description>
     </key>
 
     <key type="as" name="tile-half-right">
-      <default><![CDATA[['<Control><Alt><Shift>Right', '<Super><Alt><Shift>Right', '<Control><Alt>Right', '<Control><Super>Right']]]></default>
+      <default><![CDATA[['<Control><Alt><Shift>L', '<Control><Super><Shift>L', '<Control><Alt><Shift>Right', '<Super><Alt><Shift>Right', '<Control><Alt>Right', '<Control><Super>Right']]]></default>
       <summary>Right Half</summary>
       <description>Tile window to right 50% of screen</description>
     </key>
 
     <key type="as" name="tile-half-top">
-      <default><![CDATA[['<Control><Alt><Shift>Up', '<Super><Alt><Shift>Up', '<Control><Alt>Up', '<Control><Super>Up']]]></default>
+      <default><![CDATA[['<Control><Alt><Shift>K', '<Control><Super><Shift>K', '<Control><Alt><Shift>Up', '<Super><Alt><Shift>Up', '<Control><Alt>Up', '<Control><Super>Up']]]></default>
       <summary>Top Half</summary>
       <description>Tile window to top 50% of screen</description>
     </key>
 
     <key type="as" name="tile-half-bottom">
-      <default><![CDATA[['<Control><Alt><Shift>Down', '<Super><Alt><Shift>Down', '<Control><Alt>Down', '<Control><Super>Down']]]></default>
+      <default><![CDATA[['<Control><Alt><Shift>J', '<Control><Super><Shift>J', '<Control><Alt><Shift>Down', '<Super><Alt><Shift>Down', '<Control><Alt>Down', '<Control><Super>Down']]]></default>
       <summary>Bottom Half</summary>
       <description>Tile window to bottom 50% of screen</description>
     </key>
