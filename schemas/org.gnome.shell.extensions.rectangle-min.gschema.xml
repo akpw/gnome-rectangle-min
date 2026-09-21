@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.rectangle-min" path="/org/gnome/shell/extensions/rectangle-min/">
+    <key name="padding-outer" type="i">
+      <default>8</default>
+      <summary>Outer padding</summary>
+      <description>Padding between window and screen edges</description>
+    </key>
+
+    <key name="show-icon" type="b">
+      <default>true</default>
+      <summary>Extension Icon</summary>
+      <description>Whether to show the icon in the top bar</description>
+    </key>
+
+    <key type="as" name="tile-maximize-almost">
+      <default><![CDATA[['<Control><Alt><Shift>Return', '<Control><Super><Shift>Return']]]></default>
+      <summary>Almost Maximize</summary>
+      <description>Almost maximize window with outer padding</description>
+    </key>
+
+    <key type="as" name="tile-maximize">
+      <default><![CDATA[['<Control><Alt><Shift>M', '<Control><Super><Shift>M', '<Control><Alt>Return', '<Control><Super>Return']]]></default>
+      <summary>Full Maximize</summary>
+      <description>Fully maximize window</description>
+    </key>
+
+    <key type="as" name="tile-center">
+      <default><![CDATA[['<Control><Alt><Shift>C', '<Control><Super><Shift>C', '<Control><Alt>C', '<Control><Super>C']]]></default>
+      <summary>Center Window</summary>
+      <description>Center window on screen without changing dimensions</description>
+    </key>
+
+    <key type="as" name="tile-three-fourths-left">
+      <default><![CDATA[['<Control><Alt><Shift>bracketleft', '<Control><Super><Shift>bracketleft']]]></default>
+      <summary>Left 3/4</summary>
+      <description>Tile window to left 75% of screen</description>
+    </key>
+
+    <key type="as" name="tile-three-fourths-right">
+      <default><![CDATA[['<Control><Alt><Shift>bracketright', '<Control><Super><Shift>bracketright']]]></default>
+      <summary>Right 3/4</summary>
+      <description>Tile window to right 75% of screen</description>
+    </key>
+
+    <key type="as" name="tile-half-left">
+      <default><![CDATA[['<Control><Alt><Shift>Left', '<Super><Alt><Shift>Left', '<Control><Alt>Left', '<Control><Super>Left']]]></default>
+      <summary>Left Half</summary>
+      <description>Tile window to left 50% of screen</description>
+    </key>
+
+    <key type="as" name="tile-half-right">
+      <default><![CDATA[['<Control><Alt><Shift>Right', '<Super><Alt><Shift>Right', '<Control><Alt>Right', '<Control><Super>Right']]]></default>
+      <summary>Right Half</summary>
+      <description>Tile window to right 50% of screen</description>
+    </key>
+
+    <key type="as" name="tile-half-top">
+      <default><![CDATA[['<Control><Alt><Shift>Up', '<Super><Alt><Shift>Up', '<Control><Alt>Up', '<Control><Super>Up']]]></default>
+      <summary>Top Half</summary>
+      <description>Tile window to top 50% of screen</description>
+    </key>
+
+    <key type="as" name="tile-half-bottom">
+      <default><![CDATA[['<Control><Alt><Shift>Down', '<Super><Alt><Shift>Down', '<Control><Alt>Down', '<Control><Super>Down']]]></default>
+      <summary>Bottom Half</summary>
+      <description>Tile window to bottom 50% of screen</description>
+    </key>
+  </schema>
+</schemalist>
