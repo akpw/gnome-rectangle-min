@@ -1,6 +1,6 @@
 {
   "name": "Rectangle Min",
-  "description": "Minimal, high-performance window tiling for GNOME with macOS Rectangle shortcuts and low-latency RDP support.",
+  "description": "Window tiling for GNOME Shell with macOS Rectangle shortcuts.",
   "uuid": "rectangle-min@akpower",
   "settings-schema": "org.gnome.shell.extensions.rectangle-min",
   "shell-version": [

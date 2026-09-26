@@ -1,5 +1,5 @@
 // ==============================================================================
-// Rectangle Min - High-performance, minimal window tiling for GNOME Shell
+// Rectangle Min - Window tiling for GNOME Shell (45–48)
 // Supports GNOME 45, 46, 47, 48 (ES Module format)
 // ==============================================================================
 
