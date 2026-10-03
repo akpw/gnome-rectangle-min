@@ -81,7 +81,8 @@ if command -v restorecon &>/dev/null; then
   restorecon -RF "$DEST_DIR" 2>/dev/null || true
 fi
 
-# Disable old bloated upstream extension if present to avoid shortcut conflicts
+# Disable and trash old bloated upstream extension if present
+OLD_DEST_DIR="${EXT_BASE_DIR}/${OLD_UUID}"
 CURRENT_EXTS=$(gsettings get org.gnome.shell enabled-extensions 2>/dev/null || echo "[]")
 if echo "$CURRENT_EXTS" | grep -q "$OLD_UUID"; then
   echo "--> Disabling old upstream extension (${OLD_UUID})..."
@@ -89,6 +90,12 @@ if echo "$CURRENT_EXTS" | grep -q "$OLD_UUID"; then
   CLEANED_EXTS=$(echo "$CURRENT_EXTS" | sed "s/'$OLD_UUID'//g; s/, ,/,/g; s/\[, /[/g; s/, \]/]/g; s/\[ \]/[]/g")
   CURRENT_EXTS="$CLEANED_EXTS"
 fi
+
+if [[ -d "$OLD_DEST_DIR" ]]; then
+  echo "--> Trashing old upstream extension files at ${OLD_DEST_DIR}..."
+  rm -rf "$OLD_DEST_DIR"
+fi
+dconf reset -f /org/gnome/shell/extensions/rectangle/ 2>/dev/null || true
 
 # Add rectangle-min to enabled-extensions
 echo "--> Enabling Rectangle Min in GNOME Shell..."
