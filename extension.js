@@ -79,7 +79,7 @@ export default class RectangleMinExtension extends Extension {
         this._keyManager = new ShortcutsManager();
         this._shortcuts = new Map();
         this._gsettings = this.getSettings();
-        this._gsettings.connectObject('changed', this._onSettingsChanged.bind(this));
+        this._gsettings.connectObject('changed', this._onSettingsChanged.bind(this), this);
 
         this._registerAllShortcuts();
 
@@ -93,7 +93,7 @@ export default class RectangleMinExtension extends Extension {
         this._keyManager?.destroy();
         this._keyManager = null;
 
-        this._gsettings?.disconnectObject(this._gsettings);
+        this._gsettings?.disconnectObject(this);
         this._gsettings = null;
 
         this._menu?.destroy();
@@ -325,13 +325,14 @@ export default class RectangleMinExtension extends Extension {
         if (this._menu) return;
 
         this._menu = new PanelMenu.Button(0.0, 'RectangleMin', false);
+        const iconPath = `${this.path}/icons/rectangle-symbolic.svg`;
+        const iconFile = Gio.File.new_for_path(iconPath);
+        const gicon = new Gio.FileIcon({ file: iconFile });
         const icon = new St.Icon({
-            gicon: Gio.icon_new_for_string(`${this.path}/icons/rectangle.svg`),
+            gicon,
             styleClass: 'system-status-icon',
         });
-        const box = new St.BoxLayout();
-        box.add_child(icon);
-        this._menu.add_child(box);
+        this._menu.add_child(icon);
 
         const menu = this._menu.menu;
 

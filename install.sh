@@ -69,6 +69,11 @@ cp -r "$SCRIPT_DIR/icons" "$DEST_DIR/"
 echo "--> Compiling GSettings schemas..."
 glib-compile-schemas "$DEST_DIR/schemas"
 
+USER_GLIB_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/glib-2.0/schemas"
+mkdir -p "$USER_GLIB_DIR"
+cp "$DEST_DIR/schemas/"*.xml "$USER_GLIB_DIR/" 2>/dev/null || true
+glib-compile-schemas "$USER_GLIB_DIR" 2>/dev/null || true
+
 # Fix permissions and SELinux contexts (crucial on Fedora / RHEL)
 echo "--> Applying file permissions and security contexts..."
 chmod -R a+rX "$DEST_DIR"
