@@ -14,7 +14,6 @@ BOLD='\033[1m'
 NC='\033[0m'
 
 UUID="rectangle-min@akpower"
-OLD_UUID="rectangle@acristoffers.me"
 EXT_BASE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/gnome-shell/extensions"
 DEST_DIR="${EXT_BASE_DIR}/${UUID}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -81,24 +80,9 @@ if command -v restorecon &>/dev/null; then
   restorecon -RF "$DEST_DIR" 2>/dev/null || true
 fi
 
-# Disable and trash old bloated upstream extension if present
-OLD_DEST_DIR="${EXT_BASE_DIR}/${OLD_UUID}"
-CURRENT_EXTS=$(gsettings get org.gnome.shell enabled-extensions 2>/dev/null || echo "[]")
-if echo "$CURRENT_EXTS" | grep -q "$OLD_UUID"; then
-  echo "--> Disabling old upstream extension (${OLD_UUID})..."
-  gnome-extensions disable "$OLD_UUID" 2>/dev/null || true
-  CLEANED_EXTS=$(echo "$CURRENT_EXTS" | sed "s/'$OLD_UUID'//g; s/, ,/,/g; s/\[, /[/g; s/, \]/]/g; s/\[ \]/[]/g")
-  CURRENT_EXTS="$CLEANED_EXTS"
-fi
-
-if [[ -d "$OLD_DEST_DIR" ]]; then
-  echo "--> Trashing old upstream extension files at ${OLD_DEST_DIR}..."
-  rm -rf "$OLD_DEST_DIR"
-fi
-dconf reset -f /org/gnome/shell/extensions/rectangle/ 2>/dev/null || true
-
 # Add rectangle-min to enabled-extensions
 echo "--> Enabling Rectangle Min in GNOME Shell..."
+CURRENT_EXTS=$(gsettings get org.gnome.shell enabled-extensions 2>/dev/null || echo "[]")
 if ! echo "$CURRENT_EXTS" | grep -q "$UUID"; then
   if [[ "$CURRENT_EXTS" == "@as []" || "$CURRENT_EXTS" == "[]" || -z "$CURRENT_EXTS" ]]; then
     gsettings set org.gnome.shell enabled-extensions "['$UUID']"
@@ -106,10 +90,10 @@ if ! echo "$CURRENT_EXTS" | grep -q "$UUID"; then
     NEW_EXTS=$(echo "$CURRENT_EXTS" | sed "s/]/, '$UUID']/")
     gsettings set org.gnome.shell enabled-extensions "$NEW_EXTS"
   fi
-else
-  # Write back cleaned extensions if old was removed
-  gsettings set org.gnome.shell enabled-extensions "$CURRENT_EXTS" 2>/dev/null || true
 fi
+
+# Disable extension version validation as a safeguard for new GNOME releases
+gsettings set org.gnome.shell disable-extension-version-validation true 2>/dev/null || true
 
 # Activate extension live via gnome-extensions CLI
 gnome-extensions enable "$UUID" 2>/dev/null || true
